@@ -55,7 +55,7 @@ letter-spacing: 0px;
   max-width: 1035px;
   margin: 0 auto;
   background: #fff;
-  padding: 20px;
+  
   border-radius: 0;
   display: flex;
   justify-content: space-between;
@@ -67,26 +67,35 @@ letter-spacing: 0px;
 }
 
 .cookie-banner__inner {
+  padding: 20px;
   position: relative;
   width: 100%;
 }
 
 .cookie-banner__title {
-  display: block;
-  line-height: 26px;
+  display: block;  
   font-weight: 700;
   font-size: 16px;
   margin: 0 0 16px 0;
+}
+
+@media (max-width:1033px){
+  .cookie-banner__title {
+  	text-align:center;
+  }
+
 }
 
 .cookie-banner__body {
   display: flex;
   gap: 20px;
   align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .cookie-banner__text {
-  max-width: 820px;
+  max-width: 780px;
   font-size: 14px;
   margin: 0;
   font-family: "Montserrat", sans-serif;
