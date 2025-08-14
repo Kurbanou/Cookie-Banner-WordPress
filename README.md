@@ -60,7 +60,7 @@ letter-spacing: 0px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  z-index: 9999;
+  z-index: 9999999999999;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   opacity: 0;
   transition: opacity 0.6s ease, transform 0.6s ease;
@@ -155,25 +155,46 @@ document.addEventListener('DOMContentLoaded', function () {
   const banner = document.createElement('div');
   banner.className = 'cookie-banner';
 
-  banner.innerHTML = `
-    <div class="cookie-banner__inner">
-      <span class="cookie-banner__title">Файлы Cookie</span>
+  banner.innerHTML = `<div class="cookie-banner__inner">
+  <span class="cookie-banner__title">Файлы Cookie</span>
 
-      <div class="cookie-banner__body">
-        <p class="cookie-banner__text">
-          Мы используем файлы Cookie, разработанные нашими специалистами и третьими лицами, для анализа событий на нашем веб-сайте, что позволяет нам улучшать взаимодействие с пользователями и обслуживание. Продолжая просмотр страниц нашего сайта, вы принимаете условия его использования. Более подробные сведения смотрите в нашей
-          <a href="/privacy-policy" target="_blank" class="cookie-banner__link">Политике в отношении файлов Cookie</a>.
-        </p>
+  <div class="cookie-banner__body">
+    <p class="cookie-banner__text">
+      <span id="cookie-short">
+        Мы используем файлы Cookie, разработанные нашими специалистами и
+        третьими лицами, для анализа событий на нашем веб-сайте
+        <a href="#" class="cookie-banner__link" id="cookie-more">Подробнее</a>.
+      </span>
+      <span id="cookie-full" style="display: none">
+        Мы используем файлы Cookie, разработанные нашими специалистами и
+        третьими лицами, для анализа событий на нашем веб-сайте, что позволяет
+        нам улучшать взаимодействие с пользователями и обслуживание. Продолжая
+        просмотр страниц нашего сайта, вы принимаете условия его использования.
+      </span>
+      <br />Более подробные сведения смотрите в нашей
+      <a href="/privacy-policy" target="_blank" class="cookie-banner__link"
+        >Политике в отношении файлов Cookie</a
+      >.
+    </p>
 
-        <p class="btn cookie-banner__accept">Принимаю</p>
-      </div>
+    <p class="btn cookie-banner__accept">Принимаю</p>
+  </div>
 
-      <span class="cookie-banner__close">✕</span>
-    </div>
-  `;
+  <span class="cookie-banner__close">✕</span>
+</div> `;
 
   const acceptBtn = banner.querySelector(".cookie-banner__accept");
   const closeBtn = banner.querySelector(".cookie-banner__close");
+  const moreLink = banner.querySelector("#cookie-more");
+const shortText = banner.querySelector("#cookie-short");
+const fullText = banner.querySelector("#cookie-full");
+
+moreLink.addEventListener("click", function(e) {
+  e.preventDefault();
+  shortText.style.display = "none";
+  fullText.style.display = "inline";
+});
+
 
   function hideBanner() {
     banner.style.opacity = '0';
@@ -188,12 +209,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   closeBtn.addEventListener("click", hideBanner);
 
+  
+  setTimeout(() => {
   document.body.appendChild(banner);
+}, 1500);
 
   setTimeout(() => {
     banner.style.opacity = '1';
     banner.style.transform = 'translateX(-50%) translateY(0)';
-  }, 50);
+  }, 1550);
 });
 JS;
 
